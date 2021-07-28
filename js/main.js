@@ -65,12 +65,30 @@ add.addEventListener("click", () => {
     operator = "add";
 })
 
+substract.addEventListener("click", () => {
+    if (operator === "equal") {
+        inputNumber = "";
+        holdNumber = result;
+        return operator = "substract"
+    }
+    holdNumber = inputNumber;
+    inputNumber = "";
+    operator = "substract";
+})
+
 equal.addEventListener("click", () => {
     const firstNum = parseFloat(holdNumber);
     const secondNum = parseFloat(inputNumber);
     switch (operator) {
         case "add":
             result = addition(firstNum, secondNum)
+            calcDisplay.textContent = result;
+            operator = "equal";
+            console.log(result);
+            break;
+
+        case "substract":
+            result = substraction(firstNum, secondNum)
             calcDisplay.textContent = result;
             operator = "equal";
             console.log(result);
@@ -83,4 +101,8 @@ equal.addEventListener("click", () => {
 
 function addition(first, second) {
     return first + second
+}
+
+function substraction(first, second) {
+    return first - second
 }
