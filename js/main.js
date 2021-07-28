@@ -60,6 +60,11 @@ add.addEventListener("click", () => {
         holdNumber = result;
         return operator = "add"
     }
+
+    if (operator === "substract" || operator === "multiply" ||operator === "divide") {
+        return operator = "add";
+    }
+
     holdNumber = inputNumber;
     inputNumber = "";
     operator = "add";
@@ -71,6 +76,11 @@ substract.addEventListener("click", () => {
         holdNumber = result;
         return operator = "substract"
     }
+
+    if (operator === "add" || operator === "multiply" ||operator === "divide") {
+        return operator = "substract";
+    }
+
     holdNumber = inputNumber;
     inputNumber = "";
     operator = "substract";
