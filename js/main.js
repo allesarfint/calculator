@@ -48,9 +48,12 @@ let inputNumber = "",
 numbers.forEach(number => {
     number.addEventListener("click", (e) => {
         const value = e.target.textContent;
+        if (inputNumber.indexOf(".") !== -1 && value === ".") {
+            return
+        }
+
         inputNumber += value;
         calcDisplay.textContent = inputNumber;
-        console.log(inputNumber)
     })    
 });
 
@@ -158,17 +161,20 @@ equal.addEventListener("click", () => {
 })
 
 function addition(first, second) {
-    return first + second
+    return (first + second).toFixed(4)
 }
 
 function substraction(first, second) {
-    return first - second
+    return (first - second).toFixed(4)
 }
 
 function multiplication(first, second) {
-    return first * second
+    return (first * second).toFixed(4)
 }
 
 function division(first, second) {
-    return first / second
+    if (second === 0) {
+        return calcDisplay.textContent = "Prepare to die"
+    }
+    return (first / second).toFixed(4)
 }
