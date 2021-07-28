@@ -86,9 +86,43 @@ substract.addEventListener("click", () => {
     operator = "substract";
 })
 
+multiply.addEventListener("click", () => {
+    if (operator === "equal") {
+        inputNumber = "";
+        holdNumber = result;
+        return operator = "multiply"
+    }
+
+    if (operator === "add" || operator === "substract" ||operator === "divide") {
+        return operator = "multiply";
+    }
+
+    holdNumber = inputNumber;
+    inputNumber = "";
+    operator = "multiply";
+})
+
+divide.addEventListener("click", () => {
+    if (operator === "equal") {
+        inputNumber = "";
+        holdNumber = result;
+        return operator = "divide"
+    }
+
+    if (operator === "add" || operator === "multiply" ||operator === "substract") {
+        return operator = "divide";
+    }
+
+    holdNumber = inputNumber;
+    inputNumber = "";
+    operator = "divide";
+})
+
 equal.addEventListener("click", () => {
     const firstNum = parseFloat(holdNumber);
+    holdNumber = "";
     const secondNum = parseFloat(inputNumber);
+    inputNumber = "";
     switch (operator) {
         case "add":
             result = addition(firstNum, secondNum)
@@ -99,6 +133,20 @@ equal.addEventListener("click", () => {
 
         case "substract":
             result = substraction(firstNum, secondNum)
+            calcDisplay.textContent = result;
+            operator = "equal";
+            console.log(result);
+            break;
+
+        case "multiply":
+            result = multiplication(firstNum, secondNum)
+            calcDisplay.textContent = result;
+            operator = "equal";
+            console.log(result);
+            break;
+
+        case "divide":
+            result = division(firstNum, secondNum)
             calcDisplay.textContent = result;
             operator = "equal";
             console.log(result);
@@ -115,4 +163,12 @@ function addition(first, second) {
 
 function substraction(first, second) {
     return first - second
+}
+
+function multiplication(first, second) {
+    return first * second
+}
+
+function division(first, second) {
+    return first / second
 }
