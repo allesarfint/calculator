@@ -1,5 +1,6 @@
 * {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
 }
 
 main {
@@ -33,10 +34,11 @@ main {
     height: 40px;
     width: 300px;
     line-height: 40px;
+    text-align: right;
 }
 
 #result {
-    text-align: right;
+    font-size: 40px;
 }
 
 #keys {
@@ -71,5 +73,6 @@ main {
 }
 
 #equal {
+    background-color: rgb(206, 206, 206);
     grid-column: 3 / 5;
 }
